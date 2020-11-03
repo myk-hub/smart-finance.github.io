@@ -60,13 +60,52 @@ const styles = {
   listItem: css`
     font-size: 22px;
     margin: 11px;
+    font-family: Avenir-Light;
     color: #1d1b1e;
   `,
   collaboration: css`
-    background: linear-gradient(#9cbdc4, #00817e);
     font-family: Avenir;
-    font-size: 30px;
-    padding: 100px 20vw;
+    padding: 140px 15vw;
+    background-color: #9cbdc4;
+    text-align: center;
+  `,
+  subTitle: css`
+    font-size: 22px;
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 200px;
+    background-color: #1d1b1e;
+    color: white;
+  `,
+  mediumText: css`
+    font-size: 22px;
+    height: 130px;
+    font-family: Avenir-Light;
+    color: #1d1b1e;
+  `,
+  optionContainer: css`
+    width: 33%;
+    padding: 0 30px;
+
+    &:first-child, &:last-child {
+      padding: 0;
+    }
+  `,
+  options: css`
+    font-size: 20px;
+    width: 280px;
+    margin: 0 auto;
+    text-align: left;
+    font-family: Avenir-Light;
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 10px;
+
+    div {
+      padding: 2px;
+    }
   `,
 };
 
@@ -111,7 +150,41 @@ const App = () => (
       </div>
 
       <div className={styles.collaboration}>
-        Варіанти співпраці:
+        <span className={styles.listTitle}>Варіанти співпраці:</span>
+
+        <div style={{ display: "flex", marginTop: "20px" }}>
+          <div className={styles.optionContainer}>
+            <p className={styles.subTitle}>Базовий</p>
+            <div className={styles.mediumText}>Від вибору системи оподаткування до оптимізації. Вартість консультації 50$ і погнали.</div>
+            <div className={styles.options}>
+              <div>✔️Консультація</div>
+            </div>
+          </div>
+
+          <div className={styles.optionContainer}>
+            <p className={styles.subTitle}>Оптимальний</p>
+            <div className={styles.mediumText}>Проводимо аудит вашого бізнесу.<br /> Надаємо детальні рекомендації та схему впровадження. Відслідковування проміжних результатів за вашою участю.</div>
+            <div className={styles.options}>
+              <div>✔️Консультація</div>
+              <div>✔️Аудит</div>
+              <div>✔️Схема автоматизації</div>
+              <div>✔️Детальні рекомендації</div>  
+            </div>
+          </div>
+
+          <div className={styles.optionContainer}>
+            <p className={styles.subTitle}>Максимальний</p>
+              <div className={styles.mediumText}>Разом з Вами запроваджуємо автоматизацію та будуємо фінансову систему.</div>
+              <div className={styles.options}>
+                <div>✔️Консультація</div>
+                <div>✔️Аудит</div>
+                <div>✔️Схема автоматизації</div>
+                <div>✔️Детальні рекомендації</div>
+                <div>✔️Реалізація проекту</div>
+                <div>✔️Фінансовий консалтинг</div>
+              </div>
+          </div>
+        </div>
       </div>
     </main>
   </div>
