@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from 'emotion';
 
-import { Fade } from "react-awesome-reveal";
+import { Bounce, Fade, AttentionSeeker, JackInTheBox, Roll, Rotate, Slide, Zoom } from "react-awesome-reveal";
 
 import logo from './assets/logo.svg';
 import './App.css';
@@ -26,13 +26,33 @@ const styles = {
   `,
   navItem: css`
     font-size: 22px;
+    height: 20px;
     font-family: Avenir-Light;
     margin: 8px;
     color: #00817e;
     cursor: pointer;
+    
+    & {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 1px;
+        background: #00817e;
+        transition: width .3s;
+    }
+
+    &:hover::after {
+        width: 100%;
+        //transition: width .3s;
+    }
   `,
   preview: css`
-    height: 100%;
+    label: preview;
     width: 100vw;
     background: linear-gradient(#00817e, #9cbdc4);
     padding: 140px 20vw;
@@ -141,14 +161,20 @@ const whatNext = [
 const App = () => (
   <div className="App">
     <header className={styles.header}>
-      <img src={logo} className={styles.logo} />
+      <AttentionSeeker effect="heartBeat">
+        <img src={logo} className={styles.logo} />
+      </AttentionSeeker>
       <div className={styles.nav}>
-        {navigation.map(n => <span className={styles.navItem}>{n}</span>)}
+        {navigation.map(n => 
+          <AttentionSeeker effect="headShake">
+            <a href={`#${n}`}><span className={styles.navItem}>{n}</span></a>
+          </AttentionSeeker>
+          )}
       </div>
     </header>
 
     <main>
-      <Fade>
+      <Fade delay={300}>
         <div className={styles.preview}>
             <p className={styles.previewTitle}>Створюємо розумні фінанси, які приносять гроші 💸<br />
             <small className={styles.previewSubTitle}>10 років допомагаємо бізнесу працювати ефективно та впевнено в завтрашньому дні</small>
@@ -156,8 +182,8 @@ const App = () => (
         </div>
       </Fade>
 
-      <Fade>
-        <div className={styles.listContainer}>
+      <Fade delay={600}>
+        <div id="Послуги" className={styles.listContainer}>
           <div className={styles.list}>
             <span className={styles.listTitle}>Наші компетенції:</span>
             <div>
@@ -172,32 +198,44 @@ const App = () => (
       </Fade>
 
       <Fade>
-        <div className={styles.collaboration}>
+        <div id="Співпраця" className={styles.collaboration}>
           <span className={styles.listTitle}>Варіанти співпраці:</span>
 
           <div style={{ display: "flex", marginTop: "20px" }}>
             <div className={styles.optionContainer}>
-              <p className={styles.subTitle}>Базовий</p>
-              <div className={styles.mediumText}>Від вибору системи оподаткування до оптимізації. Вартість консультації 50$ і погнали.</div>
+              <Bounce><p className={styles.subTitle}>Базовий</p></Bounce>
+                <div className={styles.mediumText}>Від вибору системи оподаткування до оптимізації. Вартість консультації 50$ і погнали.</div>
+              <Zoom>
               <div className={styles.options}>
-                <div>✔️Консультація</div>
+              <div>✔️Консультація</div>
               </div>
+              </Zoom>
+
             </div>
 
             <div className={styles.optionContainer}>
+            <Bounce>
               <p className={styles.subTitle}>Оптимальний</p>
+              </Bounce>
+
               <div className={styles.mediumText}>Проводимо аудит вашого бізнесу.<br /> Надаємо детальні рекомендації та схему впровадження. Відслідковування проміжних результатів за вашою участю.</div>
+              <Zoom>
               <div className={styles.options}>
                 <div>✔️Консультація</div>
                 <div>✔️Аудит</div>
                 <div>✔️Схема автоматизації</div>
                 <div>✔️Детальні рекомендації</div>  
               </div>
+              </Zoom>
             </div>
 
             <div className={styles.optionContainer}>
+            <Bounce>
               <p className={styles.subTitle}>Максимальний</p>
+              </Bounce>
+
                 <div className={styles.mediumText}>Разом з Вами запроваджуємо автоматизацію та будуємо фінансову систему.</div>
+              <Zoom>
                 <div className={styles.options}>
                   <div>✔️Консультація</div>
                   <div>✔️Аудит</div>
@@ -206,6 +244,8 @@ const App = () => (
                   <div>✔️Реалізація проекту</div>
                   <div>✔️Фінансовий консалтинг</div>
                 </div>
+              </Zoom>
+
             </div>
           </div>
         </div>
@@ -225,7 +265,7 @@ const App = () => (
       </Fade>
 
       {/* <Fade direction="up"> */}
-        <div className={styles.collaboration}>
+        <div id="Про нас" className={styles.collaboration}>
           <span className={styles.listTitle}>Хто ми?</span>
 
           <div style={{ display: "flex", marginTop: "20px" }}>
