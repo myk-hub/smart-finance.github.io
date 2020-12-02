@@ -1,10 +1,12 @@
 import React from 'react';
 import { css } from 'emotion';
+import { Bounce, Fade, AttentionSeeker, Zoom } from "react-awesome-reveal";
 
-import { Bounce, Fade, AttentionSeeker, JackInTheBox, Roll, Rotate, Slide, Zoom } from "react-awesome-reveal";
-
-import logo from './assets/logo.svg';
 import './App.css';
+import logo from './assets/logo.svg';
+import tgLogo from './assets/telegram-logo.png';
+import fbLogo from './assets/facebook-logo.png';
+import instLogo from './assets/instagram-logo.png';
 
 const styles = {
   header: css`
@@ -53,7 +55,7 @@ const styles = {
   `,
   preview: css`
     label: preview;
-    width: 100vw;
+    width: auto;
     background: linear-gradient(#00817e, #9cbdc4);
     padding: 140px 20vw;
   `,
@@ -134,6 +136,31 @@ const styles = {
       padding: 2px;
     }
   `,
+  footer: css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100px;
+    padding: 30px 30vw;
+    font-family: Avenir;
+    background-color: #9cbdc4;
+    color: #1d1b1e;
+    align-items: center;
+  `,
+  footerLeftSection: css`
+    /* width: 100%; */
+  `,
+  footerRightSection: css`
+    /* width: 100%; */
+    img {
+      height: 25px;
+      width: 25px;
+    }
+  `,
+  footerLogo: css`
+    height: 50px;
+    margin: 0 5px;
+  `
 };
 
 const navigation = [
@@ -185,7 +212,7 @@ const App = () => (
       <Fade delay={600}>
         <div id="Послуги" className={styles.listContainer}>
           <div className={styles.list}>
-            <span className={styles.listTitle}>Наші компетенції:</span>
+            <span className={styles.listTitle}>Послуги:</span>
             <div>
               <ul>
                 {competitions.map(i => 
@@ -204,7 +231,7 @@ const App = () => (
           <div style={{ display: "flex", marginTop: "20px" }}>
             <div className={styles.optionContainer}>
               <Bounce><p className={styles.subTitle}>Базовий</p></Bounce>
-                <div className={styles.mediumText}>Від вибору системи оподаткування до оптимізації. Вартість консультації 50$ і погнали.</div>
+                <div className={styles.mediumText}>Від вибору системи оподаткування до оптимізації. Вартість консультації 50$.</div>
               <Zoom>
               <div className={styles.options}>
               <div>✔️Консультація</div>
@@ -296,6 +323,24 @@ const App = () => (
             <div style={{ textAlign: "center" }} className={styles.smallTitle}>Давайте обговоримо Ваш бізнес та знайдемо точки росту разом!</div>
           </div>
         </div>
+
+        <Fade>
+          <div className={styles.footer}>
+            <div className={styles.footerLeftSection}>
+              <p style={{ fontSize: "20px" }}>Smart Finance</p>
+              <p style={{ fontSize: "17px" }}>Розумні фінанси</p>
+            </div>
+
+            <div className={styles.footerRightSection}>
+              <p>Ел.пошта: <a href="mailto:smartfinance@gmail.com" style={{ color: "#1d1b1e" }}>smartfinance@gmail.com</a></p>
+              <p>Телефон: <a href="tel:+380960683422" style={{ color: "#1d1b1e" }}>+38 096 06 83 422</a></p>
+              <a href=""><img className={styles.footerLogo} src={fbLogo} /></a>
+              <a href="https://t.me/LidiyaTugay"><img className={styles.footerLogo} src={tgLogo} /></a>
+              <a href="https://instagram.com/smart_finance__?igshid=7wnc8kxw85wb"><img className={styles.footerLogo} src={instLogo} /></a>
+            </div>
+          </div>
+        </Fade>
+
     </main>
   </div>
 );
