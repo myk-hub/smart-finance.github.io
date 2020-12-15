@@ -18,7 +18,7 @@ const styles = {
     justify-content: space-between;
     font-size: calc(10px + 2vmin);
     color: white;
-    padding: 0 20vw;
+    padding: 0 10vw;
   `,
   logo: css``,
   nav: css`
@@ -50,7 +50,7 @@ const styles = {
 
     &:hover::after {
         width: 100%;
-        //transition: width .3s;
+        transition: width .3s;
     }
   `,
   preview: css`
@@ -90,8 +90,9 @@ const styles = {
     color: #1d1b1e;
   `,
   collaboration: css`
+    width: fit-content;
     font-family: Avenir;
-    padding: 140px 15vw;
+    padding: 20vh 15vw;
     background-color: #9cbdc4;
     text-align: center;
   `,
@@ -100,8 +101,8 @@ const styles = {
     border: 1px solid grey;
     padding: 10px;
     border-radius: 10px;
-    margin: 20px auto;
-    width: 200px;
+    margin: 1vh auto;
+    width: 100%;
     background-color: #1d1b1e;
     color: white;
   `,
@@ -110,7 +111,8 @@ const styles = {
   `,
   mediumText: css`
     font-size: 22px;
-    height: 130px;
+    word-break: break-word;
+    height: auto;
     font-family: Avenir-Light;
     color: #1d1b1e;
   `,
@@ -124,13 +126,15 @@ const styles = {
   `,
   options: css`
     font-size: 20px;
-    width: 280px;
+    width: fit-content;
     margin: 0 auto;
+    margin-top: 2vh;
     text-align: left;
     font-family: Avenir-Light;
     border: 1px solid #1d1b1e;
     padding: 15px;
     border-radius: 10px;
+    word-break: break-word;
 
     div {
       padding: 2px;
@@ -138,10 +142,11 @@ const styles = {
   `,
   footer: css`
     display: flex;
+    width: auto;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 100px;
-    padding: 30px 30vw;
+    height: auto;
+    padding: 8vh 30vw;
     font-family: Avenir;
     background-color: #9cbdc4;
     color: #1d1b1e;
@@ -302,7 +307,7 @@ const App = () => (
             </div>
 
             <div className={styles.optionContainer}>
-              <p className={styles.smallTitle}>Захопленні своєю справою</p>
+              <p className={styles.smallTitle}>Захоплені своєю справою</p>
               <div className={styles.mediumText}>Ми - практики та працюємо з різними сферами і чудово розуміємо специфіку кожного бізнесу. Аналізуємо ефективність Компанії та працюємо на випередження. Плануємо платіжний календар для уникнення касових розривів.</div>
             </div>
 
