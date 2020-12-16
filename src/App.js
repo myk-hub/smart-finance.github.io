@@ -25,6 +25,9 @@ const styles = {
     display: flex;
     justify-content: space-around;
     align-content: center;
+    @media (max-width: 800px) {
+      display: none;
+    }
   `,
   navItem: css`
     font-size: 22px;
@@ -33,7 +36,7 @@ const styles = {
     margin: 8px;
     color: #00817e;
     cursor: pointer;
-    
+
     & {
         display: inline-block;
         text-decoration: none;
@@ -55,24 +58,34 @@ const styles = {
   `,
   preview: css`
     label: preview;
-    width: auto;
+    width: 100%;
     background: linear-gradient(#00817e, #9cbdc4);
     padding: 140px 20vw;
+
+    @media (max-width: 800px) {
+      padding: 5vh 10vw;
+    }
   `,
   previewTitle: css`
     font-family: Avenir;
     font-size: 38px;
     color: #1d1b1e;
+    word-break: break-word;
   `,
   previewSubTitle: css`
     font-family: Avenir-Light;
     font-size: 25px;
+    word-break: break-word;
   `,
   listContainer: css`
-    margin: 125px 20vw;
+    margin: 10vh 20vw;
     font-family: Avenir;
     border-radius: 18px;
-    padding: 25px;
+    /* padding: 25px; */
+
+    @media (max-width: 800px) {
+      margin: 5vh 10vw;
+    }
   `,
   list: css`
     display: flex;
@@ -90,11 +103,17 @@ const styles = {
     color: #1d1b1e;
   `,
   collaboration: css`
-    width: fit-content;
+    width: 100%;
     font-family: Avenir;
     padding: 20vh 15vw;
     background-color: #9cbdc4;
     text-align: center;
+
+    @media (max-width: 800px) {
+      padding: 5vh 10vw;
+      display: flex;
+      flex-direction: column;
+    }
   `,
   subTitle: css`
     font-size: 22px;
@@ -102,9 +121,9 @@ const styles = {
     padding: 10px;
     border-radius: 10px;
     margin: 1vh auto;
-    width: 100%;
     background-color: #1d1b1e;
     color: white;
+    /* max-width: 190px; */
   `,
   smallTitle: css`
     font-size: 22px;
@@ -124,9 +143,15 @@ const styles = {
       padding: 0;
     }
   `,
+  plans: css`
+    @media (max-width: 861px) {
+      display: flex;
+      flex-direction: column;
+    }
+  `,
   options: css`
     font-size: 20px;
-    width: fit-content;
+    /* width: fit-content; */
     margin: 0 auto;
     margin-top: 2vh;
     text-align: left;
@@ -136,27 +161,35 @@ const styles = {
     border-radius: 10px;
     word-break: break-word;
 
+    @media (max-width: 861px) {
+      border: none;
+      border-top: 1px solid #1d1b1e;
+      border-radius: 0;
+      padding: 10 0;
+      margin-top: 60px;
+    }
+
     div {
       padding: 2px;
     }
   `,
   footer: css`
     display: flex;
-    width: auto;
+    width: 100%;
     flex-direction: row;
     justify-content: space-evenly;
     height: auto;
-    padding: 8vh 30vw;
+    /* padding: 8vh 30vw; */
     font-family: Avenir;
     background-color: #9cbdc4;
     color: #1d1b1e;
     align-items: center;
   `,
   footerLeftSection: css`
-    /* width: 100%; */
+    width: 100%;
   `,
   footerRightSection: css`
-    /* width: 100%; */
+    width: 100%;
     img {
       height: 25px;
       width: 25px;
@@ -201,7 +234,7 @@ const App = () => (
           <AttentionSeeker effect="headShake">
             <a href={`#${n}`}><span className={styles.navItem}>{n}</span></a>
           </AttentionSeeker>
-          )}
+        )}
       </div>
     </header>
 
@@ -219,11 +252,7 @@ const App = () => (
           <div className={styles.list}>
             <span className={styles.listTitle}>Послуги:</span>
             <div>
-              <ul>
-                {competitions.map(i => 
-                    <li className={styles.listItem}>{i}</li>
-                )}
-              </ul>
+              <ul>{competitions.map(i => <li className={styles.listItem}>{i}</li>)}</ul>
             </div>
           </div>
         </div>
@@ -233,21 +262,21 @@ const App = () => (
         <div id="Співпраця" className={styles.collaboration}>
           <span className={styles.listTitle}>Варіанти співпраці:</span>
 
-          <div style={{ display: "flex", marginTop: "20px" }}>
+          <div className={styles.plans}>
             <div className={styles.optionContainer}>
               <Bounce><p className={styles.subTitle}>Базовий</p></Bounce>
-                <div className={styles.mediumText}>Від вибору системи оподаткування до оптимізації. Вартість консультації 50$.</div>
-              <Zoom>
-              <div className={styles.options}>
-              <div>✔️Консультація</div>
-              </div>
-              </Zoom>
 
+              <div className={styles.mediumText}>Від вибору системи оподаткування до оптимізації. Вартість консультації 50$.</div>
+              <Zoom>
+                <div className={styles.options}>
+                  <div>✔️Консультація</div>
+                </div>
+              </Zoom>
             </div>
 
             <div className={styles.optionContainer}>
-            <Bounce>
-              <p className={styles.subTitle}>Оптимальний</p>
+              <Bounce>
+                <p className={styles.subTitle}>Оптимальний</p>
               </Bounce>
 
               <div className={styles.mediumText}>Проводимо аудит вашого бізнесу.<br /> Надаємо детальні рекомендації та схему впровадження. Відслідковування проміжних результатів за вашою участю.</div>
@@ -262,11 +291,11 @@ const App = () => (
             </div>
 
             <div className={styles.optionContainer}>
-            <Bounce>
-              <p className={styles.subTitle}>Максимальний</p>
+              <Bounce>
+                <p className={styles.subTitle}>Максимальний</p>
               </Bounce>
 
-                <div className={styles.mediumText}>Разом з Вами запроваджуємо автоматизацію та будуємо фінансову систему.</div>
+              <div className={styles.mediumText}>Разом з Вами запроваджуємо автоматизацію та будуємо фінансову систему.</div>
               <Zoom>
                 <div className={styles.options}>
                   <div>✔️Консультація</div>
@@ -300,7 +329,7 @@ const App = () => (
         <div id="Про нас" className={styles.collaboration}>
           <span className={styles.listTitle}>Хто ми?</span>
 
-          <div style={{ display: "flex", marginTop: "20px" }}>
+          <div>
             <div className={styles.optionContainer}>
               <p className={styles.smallTitle}>Налаштовані на результат</p>
               <div className={styles.mediumText}>Ми - консалтингова компанія, яка творить «розумні фінанси». Глибоко впевнені що кожен бізнес має приносити максимальний прибуток за умови щоденного відцифровування ключових показників. Прописані в бюджеті цілі та задачі мовою цифр будуть виконані на 99%!</div>
